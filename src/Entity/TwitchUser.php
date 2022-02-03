@@ -52,6 +52,9 @@ class TwitchUser implements ResourceOwnerInterface
      */
     public function __construct(array $attributes = array())
     {
+        if (isset($attributes['data'][0])) {
+            $attributes = $attributes['data'][0];
+        }
         // See https://dev.twitch.tv/docs/api/reference#get-users.
         $this->id = (int) $attributes['id'];
         $this->display_name = $attributes['display_name'];
